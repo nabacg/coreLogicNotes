@@ -38,3 +38,19 @@
 
 (run 1 [q]
   (succ zero q))
+
+(run 1 [q]
+  (succ q one))
+
+(defn natural-number [x]
+  (conde
+   ((== x zero))
+   ((fresh [prev]
+      (succ prev x)
+      (natural-number prev)))))
+
+(run 1 [q]
+  (natural-number one))
+
+(run 6 [q]
+  (natural-number q))
